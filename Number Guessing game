@@ -52,3 +52,4 @@ elif choice == 3:
     Difficulty(5)
 else:
     print("Incorrect choice")
+
