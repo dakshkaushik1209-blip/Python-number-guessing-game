@@ -1,0 +1,54 @@
+import random
+comp=random.randint(1,100)
+print("Easy - Attempts = 10, Press 1")
+print("Medium - Attempts = 7, Press 2")
+print("Hard - Attempts = 5, Press 3")
+try:
+    choice = int(input("Choose your difficulty level :- "))
+except Exception as ex:
+    print(f"Please give input from 1,2 or 3",end="")
+    exit()
+
+def Difficulty(attempts):
+    won=False
+    attempt = 0
+    while attempt!=attempts:
+        attempt+=1
+        print(f"Attempt = {attempt}/{attempts}")
+        try:
+            hum=int(input("guess your number:- "))
+        except Exception as ex:
+            print(f"Please give integer type input only")
+            attempt-=1
+            continue
+        if hum>100 or hum<1:
+            print("Please give input in between of 1 and 100 ")
+            attempt-=1
+            continue
+            
+        elif hum == comp:
+            won=True
+            # print(f"Congratulations you have won the game in {attempt} attempt")
+            break
+        elif hum>comp:
+            print("Your guess is wrong go a little bit down")
+            print(f"You have {attempts-attempt} attempts left")
+        elif hum<comp:
+            print("Your guess is wrong go a little bit up")
+            print(f"You have {attempts-attempt} attempts left")
+        # if attempt==attempts:
+        #     print("You are out of attempts")
+    if won==True:
+        print(f"Congratulations! You won the game in {attempt} attempts.")
+    else:
+        print("You are out of attempts")
+
+
+if choice == 1:
+    Difficulty(10)
+elif choice == 2:
+    Difficulty(7)
+elif choice == 3:
+    Difficulty(5)
+else:
+    print("Incorrect choice")
